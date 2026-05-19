@@ -1,0 +1,33 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TypeChip from '../../components/TypeChip.astro';
+import Tag from '../../components/Tag.astro';
+import PostCard from '../../components/PostCard.astro';
+import { formatDate, getReadingTime, postSlug } from '../../lib/posts';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({ params: { slug: postSlug(post) }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const all = await getCollection('posts', ({ data }) => !data.draft);
+const related = all.filter((p) => postSlug(p) !== postSlug(post) && p.data.tags.some((t) => post.data.tags.includes(t))).slice(0, 3);
+---
+
+<BaseLayout title={post.data.title}>
+  <main>
+    <div class="container article-wrap">
+      <a href="/writing/" class="back">← cd ../writing</a>
+      <div class="meta"><TypeChip type={post.data.type} size="lg" /><span>{formatDate(post.data.date, true)} · {getReadingTime(post)} min read</span></div>
+      <h1>{post.data.title}</h1>
+      <p class="excerpt">{post.data.excerpt}</p>
+      <div class="post-tags">{post.data.tags.map((t) => <Tag name={t} />)}</div>
+      <hr />
+      <article class="article-body"><Content /></article>
+    </div>
+    {related.length > 0 && <section class="container"><div class="cards3">{related.map((r) => <PostCard post={r} />)}</div></section>}
+  </main>
+</BaseLayout>

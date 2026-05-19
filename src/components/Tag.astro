@@ -1,0 +1,15 @@
+---
+interface Props {
+  name: string;
+  active?: boolean;
+  asSpan?: boolean;
+}
+
+const { name, active = false, asSpan = false } = Astro.props;
+---
+
+{asSpan ? (
+  <span class={`tag ${active ? 'active' : ''}`}>#{name}</span>
+) : (
+  <a href={`/writing?tag=${name}`} class={`tag ${active ? 'active' : ''}`}>#{name}</a>
+)}

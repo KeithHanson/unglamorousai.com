@@ -1,0 +1,44 @@
+---
+import TypeChip from './TypeChip.astro';
+import Tag from './Tag.astro';
+import { formatDate, getReadingTime, postSlug, type PostEntry } from '../lib/posts';
+
+interface Props {
+  post: PostEntry;
+  variant?: 'default' | 'row';
+}
+
+const { post, variant = 'default' } = Astro.props;
+const readingTime = getReadingTime(post);
+const url = `/writing/${postSlug(post)}/`;
+const linkGlyph = post.data.type === 'LINK' ? '↗' : '→';
+---
+
+{variant === 'row' ? (
+  <a href={url} class="post-row" aria-label={`${post.data.type.toLowerCase()} ${post.data.title}`}>
+    <div class="post-row-date">{formatDate(post.data.date)}</div>
+    <div>
+      <div class="post-row-meta">
+        <TypeChip type={post.data.type} />
+        <span class="post-row-time">{readingTime}{post.data.type === 'STREAM' ? 'm' : ' min read'}</span>
+      </div>
+      <h3>{post.data.title} {post.data.href && <span class="outbound" title={post.data.href}>↗</span>}</h3>
+      <p>{post.data.excerpt}</p>
+      <div class="post-tags">
+        {post.data.tags.map((t) => <Tag name={t} asSpan />)}
+      </div>
+    </div>
+    <span class="post-row-arrow">{linkGlyph}</span>
+  </a>
+) : (
+  <a href={url} class="post-card" aria-label={`${post.data.type.toLowerCase()} ${post.data.title}`}>
+    <div class="post-card-meta">
+      <TypeChip type={post.data.type} />
+      <span>{formatDate(post.data.date)}</span>
+      <span>{readingTime}{post.data.type === 'STREAM' ? 'm' : ' min'}</span>
+    </div>
+    <h3>{post.data.title} {post.data.href && <span class="outbound" title={post.data.href}>↗</span>}</h3>
+    <p>{post.data.excerpt}</p>
+    <div class="post-tags">{post.data.tags.slice(0, 3).map((t) => <Tag name={t} asSpan />)}</div>
+  </a>
+)}

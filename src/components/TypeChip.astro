@@ -1,0 +1,10 @@
+---
+interface Props {
+  type: 'TUTORIAL' | 'NOTE' | 'LINK' | 'STREAM';
+  size?: 'sm' | 'lg';
+}
+
+const { type, size = 'sm' } = Astro.props;
+---
+
+<span class={`type-chip type-chip-${type.toLowerCase()} ${size === 'lg' ? 'type-chip-lg' : ''}`}>{type}</span>

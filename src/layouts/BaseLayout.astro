@@ -1,0 +1,39 @@
+---
+import '@fontsource/geist/400.css';
+import '@fontsource/geist/500.css';
+import '@fontsource/geist/600.css';
+import '@fontsource/geist/700.css';
+import '@fontsource/geist-mono/400.css';
+import '@fontsource/geist-mono/500.css';
+import '@fontsource/space-grotesk/500.css';
+import '@fontsource/jetbrains-mono/400.css';
+import '@fontsource/ibm-plex-sans/500.css';
+import '@fontsource/ibm-plex-mono/400.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import TweaksPanel from '../islands/TweaksPanel';
+import '../styles/global.css';
+
+interface Props { title: string; description?: string }
+const { title, description = "A practitioner's notebook on purpose-built AI agents in production. Long-form tutorials, sharp notes, and live streams." } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <title>{title} | UnglamorousAI</title>
+    <meta name="description" content={description} />
+    <script is:inline>
+      (() => { try { const t = JSON.parse(localStorage.getItem('unglam-tweaks') || '{}'); const p = { chartreuse: ['oklch(0.86 0.18 130)','oklch(0.74 0.17 165)','oklch(0.80 0.15 60)'], terminal: ['oklch(0.82 0.16 145)','oklch(0.74 0.14 175)','oklch(0.78 0.13 90)'], amber: ['oklch(0.80 0.17 75)','oklch(0.74 0.14 30)','oklch(0.78 0.13 130)'], cyan: ['oklch(0.82 0.13 215)','oklch(0.76 0.16 305)','oklch(0.80 0.14 160)'], magenta: ['oklch(0.78 0.18 340)','oklch(0.74 0.15 270)','oklch(0.80 0.14 60)'] }; const s = document.documentElement.style; const a = p[t.accent || 'chartreuse']; s.setProperty('--accent', a[0]); s.setProperty('--accent-2', a[1]); s.setProperty('--accent-3', a[2]); } catch {} })();
+    </script>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <Footer />
+    <TweaksPanel client:idle />
+  </body>
+</html>

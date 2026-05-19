@@ -1,0 +1,20 @@
+---
+interface Props {
+  prompt: string;
+  hint?: string;
+  actionHref?: string;
+  actionLabel?: string;
+}
+const { prompt, hint, actionHref, actionLabel } = Astro.props;
+---
+
+<div class="section-header">
+  <h2>
+    <span class="accent">$</span>
+    {` ${prompt}`}
+    {hint && <span class="hint">{`— ${hint}`}</span>}
+  </h2>
+  {actionHref && actionLabel && (
+    <a href={actionHref} class="section-action">{actionLabel}</a>
+  )}
+</div>

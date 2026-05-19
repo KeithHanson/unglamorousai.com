@@ -1,0 +1,20 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+import { formatDate } from '../../lib/posts';
+
+const streams = (await getCollection('streams')).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const recordings = streams.filter((s) => s.data.status === 'Recording');
+const upcoming = streams.filter((s) => s.data.status === 'Upcoming');
+const featured = recordings[0];
+---
+
+<BaseLayout title="Streams">
+  <main class="container streams-page">
+    <div class="crumb"><span>$ </span>./streams --live</div>
+    <h1>Streams</h1>
+    <p>Two-hour, unedited sessions where I build real agents on a real keyboard. Recordings live here. Upcoming streams below — bring snacks.</p>
+    {featured && <section class="stream-feature"><div class="player-frame"><div class="player-overlay"><div class="label">▶ RECORDING · {featured.data.duration}</div><h2>{featured.data.title}</h2><p>{featured.data.description}</p></div></div><aside>{recordings.map((s)=><div class="stream-row"><div>{formatDate(s.data.date)} · {s.data.duration}</div><strong>{s.data.title}</strong></div>)}</aside></section>}
+    <section><div class="cards2">{upcoming.map((s)=><div class="upcoming"><div>◌ UPCOMING · {formatDate(s.data.date, true)}</div><h3>{s.data.title}</h3><p>{s.data.description}</p></div>)}</div></section>
+  </main>
+</BaseLayout>

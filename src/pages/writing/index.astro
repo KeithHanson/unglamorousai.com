@@ -1,0 +1,29 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import WritingFilters from '../../islands/WritingFilters';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts } from '../../lib/posts';
+
+const posts = await getPosts();
+const tags = Array.from(new Set(posts.flatMap((p) => p.data.tags)));
+const counts = posts.reduce<Record<string, number>>((acc, p) => {
+  acc[p.data.type] = (acc[p.data.type] ?? 0) + 1;
+  return acc;
+}, {});
+---
+
+<BaseLayout title="Writing">
+  <main class="container writing-page">
+    <div class="crumb"><span>$ </span>find ./writing -sort recent</div>
+    <h1>Long-form tutorials, short notes, and outbound links with commentary. Filter by type or tag below.</h1>
+    <WritingFilters client:load tags={tags} counts={counts} />
+    <div class="rows">
+      {posts.map((post) => (
+        <div data-post-row data-type={post.data.type} data-tags={post.data.tags.join(',')} data-hidden="false">
+          <PostCard post={post} variant="row" />
+        </div>
+      ))}
+      <div class="empty">// 0 results. try a different filter.</div>
+    </div>
+  </main>
+</BaseLayout>

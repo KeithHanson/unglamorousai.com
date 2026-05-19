@@ -1,17 +1,30 @@
 ---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostCard from '../components/PostCard.astro';
+import SectionHeader from '../components/SectionHeader.astro';
+import { getPosts } from '../lib/posts';
 
+const posts = await getPosts();
+const recent = posts.slice(0, 3);
+const more = posts.slice(3, 6);
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout title="UnglamorousAI">
+  <main>
+    <section class="container hero">
+      <div class="hero-comment"><span>// </span>a working notebook for the AI that isn't mentioned by the hype machine</div>
+      <h1>The boring AI work that we are all <span>quietly building</span> that you'll never notice.</h1>
+      <p>Long-form tutorials, sharp notes, and live streams of the unglamorous parts of AI harness engineering. All writing is original and written by hand with &lt;3 </p>
+      <div class="hero-cta"><a class="btn btn-primary" href="/writing/">read the writing →</a><a class="btn btn-ghost" href="/about/">who is writing this?</a></div>
+    </section>
+    <section class="container">
+      <SectionHeader prompt="ls -lt ./writing | head -3" hint="three most recent" actionHref="/writing/" actionLabel="see all →" />
+      <div class="cards3">{recent.map((post) => <PostCard post={post} />)}</div>
+    </section>
+    <section class="container home-split">
+      <div><SectionHeader prompt="tail ./writing" hint="also recent" />{more.map((post) => <PostCard post={post} variant="row" />)}</div>
+      <aside class="commit-feed"><SectionHeader prompt="git log --all" hint="from the repos" /><div class="empty">mock commit feed until github handle is confirmed</div></aside>
+    </section>
+    <section class="container newsletter" id="newsletter"><div class="pattern"></div><div class="content"><div><div class="label">$ subscribe --no-bullshit</div><h3>One email, every other Tuesday. The agents I shipped, the ones I scrapped.</h3></div><form><input type="email" placeholder="you@yourcompany.com" /><button class="btn btn-primary" type="button">subscribe</button></form></div></section>
+  </main>
+</BaseLayout>
