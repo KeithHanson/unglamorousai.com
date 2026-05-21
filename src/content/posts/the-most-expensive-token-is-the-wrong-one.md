@@ -4,7 +4,7 @@ type: NOTE
 date: 2026-02-21
 tags: [tooling, opinion, context]
 excerpt: "Model costs matter, but bad context design costs more. You can burn budget on cheap models if your retrieval layer is sloppy." 
-draft: false
+draft: true
 ---
 
 Draft placeholder.

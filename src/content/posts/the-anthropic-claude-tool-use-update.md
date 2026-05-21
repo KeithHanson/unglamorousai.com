@@ -5,7 +5,7 @@ date: 2026-05-15
 tags: [news, tooling]
 href: "https://example.com/anthropic-tool-use"
 excerpt: "Buried in a release note: tools can now declare side effects. This is the boring API change that will quietly fix half your agent loops."
-draft: false
+draft: true
 ---
 
 Draft placeholder.

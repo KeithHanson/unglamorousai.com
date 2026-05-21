@@ -5,7 +5,7 @@ date: 2026-04-02
 tags: [repos, agents]
 href: "https://github.com/unglamorous/cli-agent"
 excerpt: No frameworks. No abstractions. Just a while loop, a tool registry, and a stopping condition. Read it on the train.
-draft: false
+draft: true
 ---
 
 Draft placeholder.

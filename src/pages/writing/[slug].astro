@@ -4,6 +4,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import TypeChip from '../../components/TypeChip.astro';
 import Tag from '../../components/Tag.astro';
 import PostCard from '../../components/PostCard.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
 import { formatDate, getReadingTime, postSlug } from '../../lib/posts';
 
 export async function getStaticPaths() {
@@ -27,7 +28,23 @@ const related = all.filter((p) => postSlug(p) !== postSlug(post) && p.data.tags.
       <div class="post-tags">{post.data.tags.map((t) => <Tag name={t} />)}</div>
       <hr />
       <article class="article-body"><Content /></article>
+      <div class="author-strip">
+        <div>
+          <div class="author-label">written by</div>
+          <div class="author-name"><a href="/about">Keith Hanson</a></div>
+          <div class="author-role">practitioner · agent-shipper · magic-dispeller</div>
+        </div>
+        <div class="author-actions">
+          <a href="https://x.com/unglamorousai" target="_blank" rel="noreferrer" class="btn btn-ghost">share</a>
+          <a href="https://github.com/unglamorous/unglamorous-ai/discussions" target="_blank" rel="noreferrer" class="btn btn-ghost">discuss</a>
+        </div>
+      </div>
     </div>
-    {related.length > 0 && <section class="container"><div class="cards3">{related.map((r) => <PostCard post={r} />)}</div></section>}
+    {related.length > 0 && (
+      <section class="container related-posts">
+        <SectionHeader prompt="grep -l --shared-tags" hint="you might also like" />
+        <div class="cards3">{related.map((r) => <PostCard post={r} />)}</div>
+      </section>
+    )}
   </main>
 </BaseLayout>

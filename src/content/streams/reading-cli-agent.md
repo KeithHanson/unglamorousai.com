@@ -4,6 +4,7 @@ date: 2026-04-24
 duration: 58m
 status: Recording
 description: A 200-line agent loop. We read it together. No slides, no IDE theme.
+draft: true
 ---
 
 Recording notes.

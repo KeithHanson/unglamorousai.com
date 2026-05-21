@@ -4,7 +4,7 @@ type: TUTORIAL
 date: 2026-05-04
 tags: [agents, fundamentals, glossary]
 excerpt: A working definition of 'agent' that you can defend in a meeting with a skeptical VP, plus four things that get called agents but aren't.
-draft: false
+draft: true
 ---
 
 Every six months somebody redefines "agent" and the discourse resets. Let me give you a definition that has survived three production deployments.

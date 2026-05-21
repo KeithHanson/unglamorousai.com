@@ -6,6 +6,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <main class="container about-page">
     <div class="crumb"><span>$ </span>whoami</div>
     <h1>About</h1>
-    <p>I'm a practitioner. I ship purpose-built agents into production for real companies with real budgets and real lawyers. This site is where I write down what worked, what didn't, and what was just hype.</p>
+    <figure class="about-profile-card">
+      <div class="about-fact-label">operator portrait</div>
+      <img src="/profile_pic.jpg" alt="Portrait of Keith" loading="lazy" />
+    </figure>
+
+    <p class="about-lede">
+      Hi there! 👋 <br/><br/>  My name is Keith Hanson. I am ancient in internet years (coming online in the early 2000's), and I am tired of seeing the hype machine ruin the general attitude around AI. So I am talking about it - the ways developers are using it, and the ways small to medium businesses <i>actually</i> use it. 
+    </p>
+
+    <div class="about-facts">
+      <article class="about-fact-card"><div class="about-fact-label">what i do</div><div class="about-fact-value">design, build, and ship agentic systems for non-tech companies</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">what i don't do</div><div class="about-fact-value">thought leadership about AGI timelines</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">favorite tool</div><div class="about-fact-value">Opencode + Beads + docs/</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">least favorite phrase</div><div class="about-fact-value">"AI-powered"</div></article>
+    </div>
+
+    <h2>The thesis</h2>
+    <div class="article-body about-thesis">
+      <p>
+        The AI you read about online is not the AI that will change your company.
+        </br></br>
+        The AI being built in businesses today are more akin to adding a REST API to an app. NO ONE cares - except the users who get snappier interfaces, or the front line CSR taking orders all day now being able to do the things they do without an entire page refresh for every adjustment. 
+      </br></br>
+      The biggest advances across all industry will come from these very very boring problems being solved, the problems that are so complex to solve through normal programmatic solutions that LLMs truly feel like a leap for the developer. 
+      </br></br>
+      If REST apis brought us snappier interfaces, the immediate leap LLMs bring is simple natural language parsing that works 1000x better than previuos NLP solutions, which in turn enables us to reduce the interface to a voice input or chat input to "make things happen" for a business.
+      </br></br>
+      This site is for the people building those things, and business leaders who are curious and skeptical of the hype.
+      </br></br>
+      My goal is for any reader here to leave feeling like things were a little less mysterious, and to be able to imagine practical ways to apply agentic workflows to their particular problems.
+      </p>
+    </div>
+
+    <h2>Why even listen to me?</h2>
+    <div class="article-body about-thesis">
+      <p>
+        I am just a guy on the internet, like anyone else. But I've done a lot, seen a lot, and have been building this stuff every day since 2023. You should definitely be skeptical. I like tools that most people don't - but I think you'll appreciate my reasons if you dig into those posts.
+        <br /><br />
+        The main thing you can appreciate is that I'm not trying to sell you a product here. These are my honest takes and how they apply to my daily work. If it so happens that you want to reach out to me after reading these posts, that's fantastic (I am a consultant), but it isn't my primary goal here.
+        <br /><br />
+        My primary goal is one I've always held close and has driven my approach to all technical solutioning: My goal is to take away the fancy words, the mystique, and stop using words that sound like snake oil. This stuff isn't magic, and it's not rocket surgery. If you walk away from any post of mine with that feeling, then this website is worth the effort.
+        <br /><br />
+        One last reason to give some thought to what I write here: every scrap of text on this website was painstakingly crafted by human hands on a keyboard - so there will be typos, grammar mistakes, and all the warts that come with writing things in the old ways.  
+      </p>
+    </div>
+
+    <h2 class="about-contact-heading">Get in touch</h2>
+    <div class="about-contact-grid">
+      <a class="about-contact-card" href="mailto:hello@unglamorousai.com"><div class="about-fact-label">email</div><div class="about-contact-value">hello@unglamorousai.com</div></a>
+      <a class="about-contact-card" href="https://github.com/unglamorous" target="_blank" rel="noreferrer"><div class="about-fact-label">github</div><div class="about-contact-value">@unglamorous</div></a>
+      <a class="about-contact-card" href="https://bsky.app/profile/unglamorous.ai" target="_blank" rel="noreferrer"><div class="about-fact-label">bluesky</div><div class="about-contact-value">@unglamorous.ai</div></a>
+    </div>
   </main>
 </BaseLayout>

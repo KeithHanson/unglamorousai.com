@@ -11,7 +11,6 @@ interface Props {
 const { post, variant = 'default' } = Astro.props;
 const readingTime = getReadingTime(post);
 const url = `/writing/${postSlug(post)}/`;
-const linkGlyph = post.data.type === 'LINK' ? '↗' : '→';
 ---
 
 {variant === 'row' ? (
@@ -28,7 +27,6 @@ const linkGlyph = post.data.type === 'LINK' ? '↗' : '→';
         {post.data.tags.map((t) => <Tag name={t} asSpan />)}
       </div>
     </div>
-    <span class="post-row-arrow">{linkGlyph}</span>
   </a>
 ) : (
   <a href={url} class="post-card" aria-label={`${post.data.type.toLowerCase()} ${post.data.title}`}>
