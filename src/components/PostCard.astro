@@ -16,13 +16,22 @@ const url = `/writing/${postSlug(post)}/`;
 {variant === 'row' ? (
   <a href={url} class="post-row" aria-label={`${post.data.type.toLowerCase()} ${post.data.title}`}>
     <div class="post-row-date">{formatDate(post.data.date)}</div>
-    <div>
+    <div class="post-row-main">
       <div class="post-row-meta">
         <TypeChip type={post.data.type} />
         <span class="post-row-time">{readingTime}{post.data.type === 'STREAM' ? 'm' : ' min read'}</span>
       </div>
-      <h3>{post.data.title} {post.data.href && <span class="outbound" title={post.data.href}>↗</span>}</h3>
-      <p>{post.data.excerpt}</p>
+      <div class="post-row-content">
+        {post.data.banner ? (
+          <img class="post-row-banner" src={post.data.banner} alt={post.data.bannerAlt ?? `${post.data.title} banner`} loading="lazy" />
+        ) : (
+          <div class="banner-placeholder">artwork coming soon</div>
+        )}
+        <div>
+          <h3>{post.data.title} {post.data.href && <span class="outbound" title={post.data.href}>↗</span>}</h3>
+          <p>{post.data.excerpt}</p>
+        </div>
+      </div>
       <div class="post-tags">
         {post.data.tags.map((t) => <Tag name={t} asSpan />)}
       </div>
@@ -35,6 +44,11 @@ const url = `/writing/${postSlug(post)}/`;
       <span>{formatDate(post.data.date)}</span>
       <span>{readingTime}{post.data.type === 'STREAM' ? 'm' : ' min'}</span>
     </div>
+    {post.data.banner ? (
+      <img class="post-card-banner" src={post.data.banner} alt={post.data.bannerAlt ?? `${post.data.title} banner`} loading="lazy" />
+    ) : (
+      <div class="banner-placeholder">artwork coming soon</div>
+    )}
     <h3>{post.data.title} {post.data.href && <span class="outbound" title={post.data.href}>↗</span>}</h3>
     <p>{post.data.excerpt}</p>
     <div class="post-tags">{post.data.tags.slice(0, 3).map((t) => <Tag name={t} asSpan />)}</div>

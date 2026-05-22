@@ -24,6 +24,11 @@ const related = all.filter((p) => postSlug(p) !== postSlug(post) && p.data.tags.
       <a href="/writing/" class="back">← cd ../writing</a>
       <div class="meta"><TypeChip type={post.data.type} size="lg" /><span>{formatDate(post.data.date, true)} · {getReadingTime(post)} min read</span></div>
       <h1>{post.data.title}</h1>
+      {post.data.banner ? (
+        <img class="article-banner" src={post.data.banner} alt={post.data.bannerAlt ?? `${post.data.title} banner`} loading="lazy" />
+      ) : (
+        <div class="article-banner-placeholder">artwork coming soon</div>
+      )}
       <p class="excerpt">{post.data.excerpt}</p>
       <div class="post-tags">{post.data.tags.map((t) => <Tag name={t} />)}</div>
       <hr />

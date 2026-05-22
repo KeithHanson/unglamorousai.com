@@ -9,6 +9,8 @@ const posts = defineCollection({
     date: z.coerce.date(),
     tags: z.array(z.string()).default([]),
     excerpt: z.string(),
+    banner: z.string().optional(),
+    bannerAlt: z.string().optional(),
     readingTime: z.number().optional(),
     href: z.string().url().optional(),
     draft: z.boolean().default(false),

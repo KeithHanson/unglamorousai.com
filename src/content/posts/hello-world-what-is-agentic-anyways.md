@@ -4,6 +4,8 @@ type: NOTE
 date: 2026-05-21
 tags: [agents, opinion]
 excerpt: "What even is an Agent???"
+banner: /images/hello-world-banner.png
+bannerAlt: "Robot floating above Earth in space"
 draft: false
 ---
 
