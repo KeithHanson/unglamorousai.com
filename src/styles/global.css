@@ -38,7 +38,7 @@ nav a.active { color: var(--fg); border-bottom-color: var(--accent); }
 .clock { display: var(--show-clock); color: var(--muted-2); font: 400 11px var(--font-mono); margin-left: 12px; }
 .hero { padding-top: 80px; }
 .hero-comment { color: var(--muted-2); font: 400 12px var(--font-mono); margin-bottom: 24px; letter-spacing: 0.04em; }
-.hero h1 { margin: 0; font-size: clamp(40px, 7vw, 88px); line-height: 0.98; letter-spacing: -0.025em; }
+.hero h1 { margin: 0; font-size: clamp(36px, 6vw, 76px); line-height: 0.98; letter-spacing: -0.025em; }
 .hero h1 span, .crumb span, .hero-comment span, .section-header .accent { color: var(--accent); }
 .hero p { max-width: 720px; color: var(--muted); font-size: 18px; }
 .hero-cta { margin-top: 32px; }
@@ -138,6 +138,21 @@ nav a.active { color: var(--fg); border-bottom-color: var(--accent); }
 .article-body h2 { font-size: 28px; margin: 48px 0 16px; letter-spacing: -0.02em; color: var(--fg); }
 .article-body h2::before { content: "## "; color: var(--accent); font-family: var(--font-mono); font-weight: 400; opacity: 0.7; }
 .article-body h3 { font-size: 20px; margin: 32px 0 12px; color: var(--fg); }
+.article-body h2,
+.article-body h3 { scroll-margin-top: 92px; }
+.article-body .heading-anchor {
+  margin-left: 10px;
+  color: var(--muted-2);
+  text-decoration: none;
+  font: 400 14px var(--font-mono);
+  opacity: 0;
+  transition: opacity 160ms;
+}
+.article-body h2:hover .heading-anchor,
+.article-body h3:hover .heading-anchor,
+.article-body .heading-anchor:focus-visible {
+  opacity: 1;
+}
 .article-body blockquote { border-left: 3px solid var(--accent); background: color-mix(in oklch, var(--accent) 6%, transparent); padding: 16px 20px; margin: 24px 0; font-size: 18px; color: var(--fg); font-style: normal; }
 .article-body pre { background: var(--bg-deep); border: 1px solid var(--border); margin: 24px 0; padding: 16px 18px; overflow-x: auto; font-size: 13px; line-height: 1.55; }
 .article-body pre code { padding: 0; background: transparent; border: none; font-family: var(--font-mono); color: var(--fg); }
@@ -181,6 +196,7 @@ nav a.active { color: var(--fg); border-bottom-color: var(--accent); }
   background: var(--bg-elev);
   padding: 12px;
   width: 260px;
+  text-align: center;
 }
 .about-profile-card img {
   display: block;

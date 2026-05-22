@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="About the Artist">
+  <main class="container about-page artist-page">
+    <div class="crumb"><span>$ </span>whois artist</div>
+    <h1>About the Artist</h1>
+    <figure class="about-profile-card">
+      <div class="about-fact-label">artist portrait</div>
+      <img src="/artist.png" alt="Portrait of the artist" loading="lazy" />
+    </figure>
+
+    <p class="about-lede">
+      Hi! My name is Bickham, and this is my blurb!
+    </p>
+
+    <div class="about-facts">
+      <article class="about-fact-card"><div class="about-fact-label">age</div><div class="about-fact-value">11 years old</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">medium</div><div class="about-fact-value">digital illustrations</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">method</div><div class="about-fact-value">wacom tablet</div></article>
+      <article class="about-fact-card"><div class="about-fact-label">hobbies</div><div class="about-fact-value">drawing, guitar, soccer, gaming</div></article>
+    </div>
+
+    <h2>The approach</h2>
+    <div class="article-body about-thesis">
+      <p>This is another thing I want to say.</p>
+      <p>
+        And here's another
+      </p>
+      <p>
+        And another!
+      </p>
+    </div>
+
+    <h2 class="about-contact-heading">Get in touch</h2>
+    <div class="about-contact-grid">
+      <a class="about-contact-card" href="mailto:hello@unglamorousai.com"><div class="about-fact-label">email</div><div class="about-contact-value">hello@unglamorousai.com</div></a>
+      <a class="about-contact-card" href="https://github.com/unglamorous" target="_blank" rel="noreferrer"><div class="about-fact-label">github</div><div class="about-contact-value">@unglamorous</div></a>
+      <a class="about-contact-card" href="https://bsky.app/profile/unglamorous.ai" target="_blank" rel="noreferrer"><div class="about-fact-label">bluesky</div><div class="about-contact-value">@unglamorous.ai</div></a>
+    </div>
+  </main>
+</BaseLayout>

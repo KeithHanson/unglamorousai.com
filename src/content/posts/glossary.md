@@ -359,6 +359,18 @@ But, when we think of Context in the realm of agentics, we are talking about wha
 
 There are a lot of tricks and practices that make context management a full-blown "Thing". 
 
+## Compactions
+
+This is what an agentic developers' harness will do when it runs out of context. 
+
+It is another kind of LLM call - it takes the entirety of the discussion, ships it off to an LLM with a prompt like "Analyze this chat, summarize the content, list the key files, tasks completed, tasks in progress, and what needs to be done next."
+
+Compactions absolutely suck for the developer - the LLM is more or less starting from scratch. It just spent 100k tokens grepping around and finding the right files, and now, if the compaction summary doesn't contain that information, you're starting from scratch.
+
+Context size and compactions are the major limiter in most agentic developers' progress each day. 
+
+This is why it is so important to have good docs, good task tracking, and a good AGENTS.md/CLAUDE.md file, pointing your agent in the right direction to remind itself when a compaction annhialates it's context.
+
 ## Inference
 
 The actual raw act of providing an LLM input, and receiving output. 
