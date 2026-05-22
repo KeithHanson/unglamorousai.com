@@ -4,6 +4,8 @@ type: NOTE
 date: 2026-01-01
 tags: [agents, opinion]
 excerpt: "Stop #1 for demystifying the hype"
+banner: /images/rtfm.png
+bannerAlt: "Robot floating above Earth in space"
 draft: false
 ---
 
@@ -109,9 +111,9 @@ This space is definitely one to watch as we see more and more capable, purpose-b
 
 So how DOES an LLM or ML model "learn" things, if it's just passing signals along to neighbors until we get good/bad (or the next word in the sentence, with LLMs)?
 
-To answer that, we have to unfortunately zooming back out to what a neural network is:
+To answer that, we unfortunately have to zoom back out to what a neural network is:
 
-a neuron with inputs and outputs, connected to none or many neighbors, and weights: putting a finger on the scale for how signals pass from neuron to neuron)
+a neuron with inputs and outputs, connected to none or many neighbors, and weights: putting a finger on the scale for how signals pass from neuron to neuron
 
 When you create a new ML model, you create completely random connections between all the neurons. And each connection gets a random "weight" applied to it.
 
@@ -139,9 +141,9 @@ When a developer writes software using an LLM, they write prompts: fancy words f
 
 Simple, human english sentences that provide the LLM with enough information to create a correct output. Step 1, Step 2, Step 3. 
 
-There are different kinds of prompts - a sysetm prompt, and a user prompt.
+There are different kinds of prompts - a system prompt, and a user prompt.
 
-The System Prompt is the strongest of the two - it usually contains the instructions that MUST be followed, regardles of what the user requests in the user prompt. 
+The System Prompt is the strongest of the two - it usually contains the instructions that MUST be followed, regardless of what the user requests in the user prompt. 
 
 The User Prompt is where input from your user goes - the thing they're requesting of the LLM or chatting about or any other number of inputs one can feed these models.
 
@@ -185,13 +187,13 @@ Once you have enough good / bad as input and output, then you can do lots of thi
 
 Not every framework has a set of optimizers built-in, but my favorite does. Regardless, these concepts can be applied to any prompt that can be templated. 
 
-Optimizers in the world of Prompt Engineering is all about getting a bigger, better, smarter LLM to write the prompt for a smaller, faster, dumber LLM: a teacher/student cycle.
+Optimizers in the world of Prompt Engineering are all about getting a bigger, better, smarter LLM to write the prompt for a smaller, faster, dumber LLM: a teacher/student cycle.
 
 If you know what the LLM SHOULD produce, then you can judge the output when you tweak a few words in the prompt. 
 
 If you template your prompts (Inputs go here, Examples go here, Outputs go here), then you can reliably tweak different chunks and sections of text to experiment with the output. 
 
-In frameworks like [DSPy]() that provide optimization tools, once you have the labeled data, you can have the optimizer tweak your prompt hundreds or thousands of times until you get the best results from your examples.
+In frameworks like [DSPy](https://dspy.ai/) that provide optimization tools, once you have the labeled data, you can have the optimizer tweak your prompt hundreds or thousands of times until you get the best results from your examples.
 
 If you can *generate* labeled examples, then you have created yourself an optimization flywheel - where the more evals you run improve your optimizations, and on and on (eventually achieving diminishing returns).  
 
@@ -221,7 +223,7 @@ And now with support for running LLMs on Apple's Unified Memory, we're seeing mo
 
 But what does it mean? 
 
-Running a model locally means you download an often gigabytes large file to your computer, run software that uses that file (the model), and allows you to chat completely offline - no APIs, no servers recording your input and output. 
+Running a model locally means you download a file that is often gigabytes in size to your computer, run software that uses that file (the model), and allows you to chat completely offline - no APIs, no servers recording your input and output. 
 
 It is the ultimate way to have a completely private, protected LLM that you control completely. And you don't share the resources with anyone else.
 
@@ -241,7 +243,7 @@ Sadly, NO framework afaik provides all three, but we can easily build our own.
 
 An Agent in the context of AI is some specialized LLM-powered software that accomplishes tasks or goals, either with human-in-the-loop directing it or completely autonomously. 
 
-At it's simplest, it is a programming for loop, with LLM calls meant to get inputs, other calls to pass input to parameters of tools, other calls to interpret the responses of those tools, and other calls to validate whether the agent is done or not.
+At its simplest, it is a programmed for-loop, with LLM calls meant to get inputs, other calls to pass input to parameters of tools, other calls to interpret the responses of those tools, and other calls to validate whether the agent is done or not.
 
 In the world of software, a prompt is more like procedural software - run this, and it will do it in this order each time. 
 
@@ -251,7 +253,7 @@ An agent has more freedom to choose what to do next typically, but has explicit 
 
 A subagent is simply an agent that is called by another agent. Harness engineering often uses this to deal with context problems. 
 
-One agent might be consider the "supervisor", and subagents could be in charge of several things - one subagent could summarize the current issue list for the supervisor, and then the supervisor can direct another subagent to complete a single task on that list, etc. 
+One agent might be considered the "supervisor", and subagents could be in charge of several things - one subagent could summarize the current issue list for the supervisor, and then the supervisor can direct another subagent to complete a single task on that list, etc. 
 
 When you have one agent drive the overall process, and another subagent handle the work, each agent can focus on it's own context. 
 
