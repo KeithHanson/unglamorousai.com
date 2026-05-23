@@ -16,6 +16,11 @@ const { post } = Astro.props;
 const { Content } = await render(post);
 const all = await getCollection('posts', ({ data }) => !data.draft);
 const related = all.filter((p) => postSlug(p) !== postSlug(post) && p.data.tags.some((t) => post.data.tags.includes(t))).slice(0, 3);
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site ?? 'https://unglamorousai.com').toString();
+const linkedInShareUrl = `https://www.linkedin.com/shareArticle?url=${encodeURIComponent(canonicalUrl)}`;
+const discussionTitle = `Discussion: ${post.data.title}`;
+const discussionBody = `Post: ${canonicalUrl}`;
+const discussUrl = `https://github.com/KeithHanson/unglamorousai.com/discussions/new?category=comments&title=${encodeURIComponent(discussionTitle)}&body=${encodeURIComponent(discussionBody)}`;
 ---
 
 <BaseLayout title={post.data.title}>
@@ -40,8 +45,8 @@ const related = all.filter((p) => postSlug(p) !== postSlug(post) && p.data.tags.
           <div class="author-role">practitioner · agent-shipper · magic-dispeller</div>
         </div>
         <div class="author-actions">
-          <a href="https://x.com/unglamorousai" target="_blank" rel="noreferrer" class="btn btn-ghost">share</a>
-          <a href="https://github.com/unglamorous/unglamorous-ai/discussions" target="_blank" rel="noreferrer" class="btn btn-ghost">discuss</a>
+          <a href={linkedInShareUrl} target="_blank" rel="noreferrer" class="btn btn-ghost">share</a>
+          <a href={discussUrl} target="_blank" rel="noreferrer" class="btn btn-ghost">discuss</a>
         </div>
       </div>
     </div>
