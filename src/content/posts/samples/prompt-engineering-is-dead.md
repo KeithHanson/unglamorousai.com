@@ -1,6 +1,6 @@
 ---
 title: "Prompt Engineering is dead"
-type: NOTE
+type: OPINION
 date: 2026-05-12
 tags: [agents, tooling, opinion]
 excerpt: "Stop writing 800-line system prompts. The new game is context engineering: what tools the model has, what state it sees, and when it stops talking."

@@ -73,9 +73,10 @@ nav a.active { color: var(--fg); border-bottom-color: var(--accent); }
 .type-chip { display: inline-block; border: 1px solid; border-radius: 2px; font: 500 10px var(--font-mono); letter-spacing: 0.08em; padding: 2px 7px; }
 .type-chip-lg { font-size: 11px; }
 .type-chip-tutorial { color: var(--accent); border-color: var(--accent); background: color-mix(in oklch, var(--accent) 12%, transparent); }
-.type-chip-note { color: var(--fg); border-color: var(--fg); background: color-mix(in oklch, var(--fg) 8%, transparent); }
+.type-chip-opinion { color: var(--fg); border-color: var(--fg); background: color-mix(in oklch, var(--fg) 8%, transparent); }
 .type-chip-link { color: var(--accent-2); border-color: var(--accent-2); background: color-mix(in oklch, var(--accent-2) 12%, transparent); }
 .type-chip-stream { color: var(--accent-3); border-color: var(--accent-3); background: color-mix(in oklch, var(--accent-3) 14%, transparent); }
+.type-chip-prompts { color: oklch(0.84 0.14 32); border-color: oklch(0.84 0.14 32); background: color-mix(in oklch, oklch(0.84 0.14 32) 12%, transparent); }
 .tag { border: 1px solid var(--border); color: var(--muted); font: 400 11px var(--font-mono); padding: 3px 8px; text-decoration: none; }
 .tag.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 .section-header { display: flex; justify-content: space-between; margin: 20px 0; }

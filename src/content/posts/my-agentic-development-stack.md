@@ -1,9 +1,11 @@
 ---
 title: "My Agentic Development Stack"
-type: NOTE
+type: OPINION
 date: 2026-05-22
 tags: [tools, agents, opinion]
 excerpt: "There are many like it, but this is mine."
+banner: /images/toolsss.png
+bannerAlt: "Robot laying in a pile of tools - artist: Bickham Hanson"
 draft: false
 ---
 

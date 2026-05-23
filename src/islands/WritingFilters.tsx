@@ -7,7 +7,8 @@ export default function WritingFilters({ counts }: Props) {
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
-    setType(params.get('type') ?? 'ALL');
+    const fromUrl = params.get('type') ?? 'ALL';
+    setType(fromUrl === 'NOTE' ? 'OPINION' : fromUrl);
   }, []);
 
   useEffect(() => {
@@ -16,13 +17,14 @@ export default function WritingFilters({ counts }: Props) {
     const next = q.toString();
     history.replaceState({}, '', next ? `?${next}` : window.location.pathname);
     document.querySelectorAll<HTMLElement>('[data-post-row]').forEach((row) => {
-      const rowType = row.dataset.type ?? '';
+      const rawType = row.dataset.type ?? '';
+      const rowType = rawType === 'NOTE' ? 'OPINION' : rawType;
       const hide = type !== 'ALL' && rowType !== type;
       row.dataset.hidden = hide ? 'true' : 'false';
     });
   }, [type]);
 
-  const types = ['ALL', 'TUTORIAL', 'NOTE', 'LINK', 'STREAM'];
+  const types = ['ALL', 'TUTORIAL', 'OPINION', 'LINK', 'STREAM', 'PROMPTS'];
   return <>
     <div className="filter-row filter-row-type"><span>type:</span>{types.map((t)=><button type="button" className={type===t?'active':''} onClick={()=>setType(t)}>{t}{t !== 'ALL' ? ` · ${counts[t] ?? 0}` : ''}</button>)}</div>
   </>;

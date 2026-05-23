@@ -1,11 +1,11 @@
 ---
 title: "Hello World"
-type: NOTE
+type: OPINION
 date: 2026-05-21
 tags: [agents, opinion]
 excerpt: "What even is an Agent???"
 banner: /images/hello-world-banner.png
-bannerAlt: "Robot floating above Earth in space"
+bannerAlt: "Robot floating above Earth in space - credit, Bickham Hanson"
 draft: false
 ---
 

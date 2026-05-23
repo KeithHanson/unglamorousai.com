@@ -1,10 +1,11 @@
 ---
 interface Props {
-  type: 'TUTORIAL' | 'NOTE' | 'LINK' | 'STREAM';
+  type: 'TUTORIAL' | 'OPINION' | 'NOTE' | 'LINK' | 'STREAM' | 'PROMPTS';
   size?: 'sm' | 'lg';
 }
 
 const { type, size = 'sm' } = Astro.props;
+const normalizedType = type === 'NOTE' ? 'OPINION' : type;
 ---
 
-<span class={`type-chip type-chip-${type.toLowerCase()} ${size === 'lg' ? 'type-chip-lg' : ''}`}>{type}</span>
+<span class={`type-chip type-chip-${normalizedType.toLowerCase()} ${size === 'lg' ? 'type-chip-lg' : ''}`}>{normalizedType}</span>

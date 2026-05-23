@@ -1,11 +1,11 @@
 ---
 title: "Glossary"
-type: NOTE
+type: OPINION
 date: 2026-01-01
 tags: [agents, opinion]
 excerpt: "Stop #1 for demystifying the hype"
 banner: /images/rtfm.png
-bannerAlt: "Robot floating above Earth in space"
+bannerAlt: "Robot admonishing us to RTFM! - artist: Bickham Hanson"
 draft: false
 ---
 

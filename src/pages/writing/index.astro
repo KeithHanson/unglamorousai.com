@@ -6,7 +6,8 @@ import { getPosts } from '../../lib/posts';
 
 const posts = await getPosts();
 const counts = posts.reduce<Record<string, number>>((acc, p) => {
-  acc[p.data.type] = (acc[p.data.type] ?? 0) + 1;
+  const type = p.data.type === 'NOTE' ? 'OPINION' : p.data.type;
+  acc[type] = (acc[type] ?? 0) + 1;
   return acc;
 }, {});
 ---
